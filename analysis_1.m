@@ -1,7 +1,7 @@
 clear;
 clc;
-[X(:,1),X(:,2),time1]=textread('201501191350_download.txt','%f%f%s','headerlines',0);
-[D(:,1),D(:,2),time2]=textread('20150119135038_parse.txt','%f%f%s','headerlines',0);
+[X(:,1),X(:,2),time1]=textread('201501211809_download.txt','%f%f%s','headerlines',0);
+[D(:,1),D(:,2),time2]=textread('20150121180932_parse.txt','%f%f%s','headerlines',0);
 
 start_time1=str2double(time1{1}(1:2))*60*60+str2double(time1{1}(4:5))*60+str2double(time1{1}(7:8));
 start_time2=str2double(time2{1}(1:2))*60*60+str2double(time2{1}(4:5))*60+str2double(time2{1}(7:8));
@@ -175,7 +175,7 @@ k=plot(Avg,'o-');
 set(k, 'MarkerSize', 10, 'MarkerFaceColor', 'b', ...
     'MarkerEdgeColor', [0 .5 0]);
 axis([0,size(Avg,2),-inf,inf]);
-ylabel('Avg Data_rate');
+ylabel('Avg Data rate');
 subplot(3,1,2);
 h=errorbar(1:size(Avg_Ecio,2),Avg_Ecio,Avg_Ecio-Q1_Ecio,Q3_Ecio-Avg_Ecio,'o-');
 set(h, 'MarkerSize', 10, 'MarkerFaceColor', [.3 1 .3], ...
@@ -193,30 +193,12 @@ figure(2);
 subplot(3,1,1);
 plot(Avg,'b');
 axis([0,size(Avg,2),-inf,inf]);
-ylabel('Avg Data_rate');
+ylabel('Avg Data rate');
 subplot(3,1,2);
 plot(Std_Ecio,'g');
+axis([0,size(Std_Ecio,2),-inf,inf]);
 ylabel('Ecio');
 subplot(3,1,3);
 plot(Avg_Rscp,'r')
 axis([0,size(Avg_Rscp,2),-inf,inf]);
 ylabel('Avg Rscp');
-
-%{
-seconds=str2double(time1{1}(7:8));
-size=size(X,2);
-%3 seconds as window size
-window_size=9;
-Avg=[];
-var=[];
-for i=1:3:size-window_size
-    Avg=[Avg mean(X(1,i:i+window_size-1))];
-    var=[var std(X(1,i:i+window_size-1),1)];
-end;
-
-figure(1);
-plot(Avg);
-
-figure(2);
-plot(var,'r');
-%}
