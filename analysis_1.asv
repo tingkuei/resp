@@ -165,7 +165,8 @@ Data(2,:)=Max_Ecio(1,2:size(Max_Ecio,2));
 Data(3,:)=Min_Ecio(1,2:size(Min_Ecio,2));
 Data(4,:)=Std_Ecio(1,2:size(Std_Ecio,2));
 Data(5,:)=Max_Rscp(1,2:size(Max_Rscp,2));
-Data(6,:)=Std_Rscp(1,2:size(Std_Rscp,2));
+Data(6,:)=Min_Rscp(1,2:size(Min_Rscp,2));
+Data(7,:)=Std_Rscp(1,2:size(Std_Rscp,2));
 figure(1);
 subplot(3,1,1);
 k=plot(Avg,'o-');
@@ -203,13 +204,14 @@ ylabel('Avg Rscp');
 % file output
 file_path=cd;
 fid = fopen([cd,'\output.txt'], 'w');
+%for i=1:
 for i=1:size(Data,2)
     for j=1:size(Data,1)
-        fprintf(fid, '%f',Data(j,i));
-        fprintf(fid,' ');
+        fprintf(fid, '%f',a);
     end
-    fprintf(fid,'\n');
 end
+
+
 fclose(fid);
 
 
