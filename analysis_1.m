@@ -1,7 +1,7 @@
 clear;
 clc;
-[X(:,1),X(:,2),time1]=textread('201501191324_download.txt','%f%f%s','headerlines',0);
-[D(:,1),D(:,2),time2]=textread('20150119132413_parse.txt','%f%f%s','headerlines',0);
+[X(:,1),X(:,2),time1]=textread('201501191337_download.txt','%f%f%s','headerlines',0);
+[D(:,1),D(:,2),time2]=textread('20150119133728_parse.txt','%f%f%s','headerlines',0);
 
 start_time1=str2double(time1{1}(1:2))*60*60+str2double(time1{1}(4:5))*60+str2double(time1{1}(7:8));
 start_time2=str2double(time2{1}(1:2))*60*60+str2double(time2{1}(4:5))*60+str2double(time2{1}(7:8));
